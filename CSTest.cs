@@ -1,7 +1,8 @@
 using System;
 namespace CSTest{
     public class TestCase{
-		public double[] MoneySize {get; set;}
+		public double[] MoneySize = new double[] {0.25, 0.10, 0.05, 0.01};
+		//public double[] MoneySize {get; set;}
         public void TestValues()
 		{
 			uint ValueInt = 123;
@@ -32,11 +33,22 @@ namespace CSTest{
 			FirstValue  -= SecondValue;
         }
 
-		public void Payment(double owed, double pay)
+		public double[] Payment(double owed, double paid)
 		{
-			double MoneySize = new double[] {0.25, 0.10, 0.05, 0.01};
-			 
+			double[] ReturnMoneyList;
+			double ReturnMoney =  paid - owed;
+			if (ReturnMoney < 0 )
+				ReturnMoneyList = new double[] {ReturnMoney};
+			else
+			{
+				ReturnMoneyList = new double[] {0.0, 0.0, 0.0, 0.0};
+				for(int iCount = 0; iCount < MoneySize.Length && ReturnMoney > 0; iCount++)
+				{
+					ReturnMoneyList[iCount] = Math.Truncate(ReturnMoney / MoneySize[iCount]);
+					ReturnMoney -= Math.Truncate(ReturnMoney/MoneySize[iCount]) * MoneySize[iCount];
+				}
+			}
+			return ReturnMoneyList;
 		}
-
     }
 }

@@ -8,19 +8,24 @@ namespace Prog
 		static void Main(string[] arg)
 		{
 			TestCase TestScenario = new TestCase();
-			int ValueLeft = 0;
-			int ValueRight = 0;
+			double ValueLeft = 0;
+			double ValueRight = 0;
+			double[] values;
 			if (arg.Length > 0)  
 			{
 				if (arg.Length > 1)
 				{
-					Console.WriteLine("Len = {0}", arg.Length);
-					ValueRight = (int)Convert.ToInt32(arg[1]);
-					ValueLeft =(int)Convert.ToInt32(arg[0]);
+					ValueRight = (double)Convert.ToDouble(arg[1]);
+					ValueLeft =(double)Convert.ToDouble(arg[0]);	
 				}
 			}
-			TestScenario.SwapVariables(ref ValueLeft, ref ValueRight);
-			Console.WriteLine("Right = {0} \nLeft = {1}", ValueRight, ValueLeft);
+			//TestScenario.SwapVariables(ref ValueLeft, ref ValueRight);
+			values = TestScenario.Payment(ValueLeft, ValueRight);
+			for (int Item = 0; Item < values.Length; Item++)
+			{
+				Console.WriteLine("{0}$ = {1}", TestScenario.MoneySize[Item], values[Item]);	
+
+			}
 		}
 	}
 }
