@@ -1,6 +1,7 @@
 using System;
 namespace CSTest{
     public class TestCase{
+		public double[] MoneySize {get; set;}
         public void TestValues()
 		{
 			uint ValueInt = 123;
@@ -30,5 +31,12 @@ namespace CSTest{
 			SecondValue = FirstValue - SecondValue;
 			FirstValue  -= SecondValue;
         }
+
+		public void Payment(double owed, double pay)
+		{
+			double MoneySize = new double[] {0.25, 0.10, 0.05, 0.01};
+			 
+		}
+
     }
 }
