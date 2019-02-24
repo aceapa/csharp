@@ -51,4 +51,66 @@ namespace CSTest{
 			return ReturnMoneyList;
 		}
     }
+	class Words {
+        public Words(string SomeTextWord) => (TextWord, NumberOfWords) = (SomeTextWord, 1);
+        public string TextWord {get; set;}
+        public int NumberOfWords{get; set;}
+
+    }
+    class Character{
+        public Character(char SomeChar) => (ValueChar, NumberOfChar) = (SomeChar, 1);
+
+        public char ValueChar{get; set;}
+        public int NumberOfChar{get; set;}
+    }
+	class WordCount{
+    private static string[] tests = new string[]
+        {
+            @"The test of the 
+            best way to handle
+
+multiple lines,   extra spaces and more.",
+            @"Using the starter app, create code that will 
+loop through the strings and identify the total 
+character count, the number of characters
+excluding whitespace (including line returns), and the
+number of words in the string. Finally, list each word, ensuring it
+is a valid word."
+        };
+
+        /* 
+            First string (tests[0]) Values:
+            Total Words: 14
+            Total Characters: 89
+            Character count (minus line returns and spaces): 60
+            Most used word: the (2 times)
+            Most used character: e (10 times)
+
+            Second string (tests[1]) Values:
+            Total Words: 45
+            Total Characters: 276
+            Character count (minus line returns and spaces): 230
+            Most used word: the (6 times)
+            Most used character: t (24 times)
+        */
+        private static void WordCount(string Stringtext)
+        { 
+            List<Words> WordList = new List<Words>();
+            List<Character> WordList = new List<character>();
+            int CountInteger;
+            int CountChar;
+            String SomeWord;
+            CountChar = 0;
+
+            for(int CharacterIndex = 0; CharacterIndex < Stringtext.Length; CharacterIndex++)
+            {
+                if (!((Stringtext[CharacterIndex] == '\r') && (Stringtext[CharacterIndex+1] == '\n')))
+                {
+                   CountChar++; 
+                }
+                
+            }
+            Console.WriteLine("Total Characters: {0}", CountChar);
+        }
+	}
 }
